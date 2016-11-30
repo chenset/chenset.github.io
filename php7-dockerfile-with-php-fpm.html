@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>
+        
+        在Docker中一键安装PHP7 -
+        
+        Fly Say
+    </title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <script>
+    var targetProtocol = "https:";
+    if (location.host.indexOf('127.0.0.1') === -1 && location.protocol != targetProtocol){
+        location.href = targetProtocol + location.href.substring(location.protocol.length);
+    }
+    </script>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/base.css">
+    
+    <link rel="canonical" href="https://flysay.com/php7-dockerfile-with-php-fpm.html"/>
+    
+
+    <link rel="icon" href="//flysay.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="//flysay.com/favicon.ico" type="image/x-icon">
+    <link rel="bookmark" href="//flysay.com/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<div id="pjax-container">
+    <header class="main-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <span class="main-logo-wrap">
+                    <a id="main-logo"
+                            href="/"><span style="color:#ff5252">F</span><span style="color:#cc9966">l</span><span style="color:#41B883">y</span> <span style="color:#01AAED">S</span><span style="color:#cc9966">a</span><span style="color:#41B883">y</span></a></span>
+                <nav>
+                    <ul>
+                        
+                        <li class="cl-effect-16"><a href="/">首页</a></li>
+                        
+                        <li class="cl-effect-16"><a href="/tags/">标签</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-4">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input"><input type="hidden" name="sitesearch" value="https://flysay.com"></form>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="main-container">
+        <div class="container content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <article class="article">
+    <header class="article-header text-left">
+        
+        <h1 class="title2">在Docker中一键安装PHP7</h1>
+        
+    </header>
+    <div class="article-meta text-muted">
+        1月11日, 2016
+        <b class="gap">/</b>
+        <a class="text-muted article-tag-link" href="/tags/Docker/">Docker</a>, <a class="text-muted article-tag-link" href="/tags/PHP/">PHP</a>
+    </div>
+    
+
+    
+    <div class="article-directory">
+        <span class="toc-icon">#</span>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">2.</span> <span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.</span> <span class="toc-text">创建镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">4.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改container-视情况可选"><span class="toc-number">5.</span> <span class="toc-text">修改container(视情况可选)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进入container的bash-可选"><span class="toc-number">6.</span> <span class="toc-text">进入container的bash(可选)</span></a></li></ol>
+    </div>
+    
+    
+    <div><!-- 非多余! -->
+        <div class="article-content ">
+            
+            
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>通过使用docker的Dockerfile文件能够非常方便的生成指定的运行环境.<br>下面将要介绍的是使用Dockerfile文件一键生成的PHP7执行环境.</p>
+<end></end>
+
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">FROM ubuntu:latest  <span class="comment"># 可以改为已经存在的ubuntu镜像, 如果没有, 则会下载ubunt镜像.</span></div><div class="line"></div><div class="line">MAINTAINER chenset, 4199191@qq.com</div><div class="line"></div><div class="line">RUN apt-get update</div><div class="line"></div><div class="line">RUN apt-get build-dep -y php5 &amp;&amp; apt-get install -y \</div><div class="line">    git \</div><div class="line">    make \</div><div class="line">    autoconf \</div><div class="line">    build-essential \</div><div class="line">    g++ \</div><div class="line">    libc6-dev \</div><div class="line">    libmcrypt-dev</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">RUN <span class="built_in">cd</span> /opt &amp;&amp; git <span class="built_in">clone</span> https://github.com/php/php-src.git --depth=1</div><div class="line"></div><div class="line">RUN <span class="built_in">cd</span> /opt/php-src &amp;&amp; ./buildconf --force</div><div class="line"></div><div class="line">RUN <span class="built_in">cd</span> /opt/php-src &amp;&amp; ./configure --quiet \</div><div class="line">--prefix=/usr/<span class="built_in">local</span>/php7 \</div><div class="line">--exec-prefix=/usr/<span class="built_in">local</span>/php7 \</div><div class="line">--bindir=/usr/<span class="built_in">local</span>/php7/bin \</div><div class="line">--sbindir=/usr/<span class="built_in">local</span>/php7/sbin \</div><div class="line">--includedir=/usr/<span class="built_in">local</span>/php7/include \</div><div class="line">--libdir=/usr/<span class="built_in">local</span>/php7/lib/php \</div><div class="line">--mandir=/usr/<span class="built_in">local</span>/php7/php/man \</div><div class="line">--with-config-file-path=/usr/<span class="built_in">local</span>/php7/etc \</div><div class="line">--with-mcrypt=/usr/include \</div><div class="line">--with-mhash \</div><div class="line">--with-openssl \</div><div class="line">--with-mysqli=shared,mysqlnd \</div><div class="line">--with-pdo-mysql=shared,mysqlnd \</div><div class="line">--with-gd \</div><div class="line">--with-iconv \</div><div class="line">--with-zlib \</div><div class="line">--enable-zip \</div><div class="line">--enable-inline-optimization \</div><div class="line">--disable-debug \</div><div class="line">--disable-rpath \</div><div class="line">--enable-shared \</div><div class="line">--enable-xml \</div><div class="line">--enable-bcmath \</div><div class="line">--enable-shmop \</div><div class="line">--enable-sysvsem \</div><div class="line">--enable-mbregex \</div><div class="line">--enable-mbstring \</div><div class="line">--enable-ftp \</div><div class="line">--enable-gd-native-ttf \</div><div class="line">--enable-pcntl \</div><div class="line">--enable-sockets \</div><div class="line">--with-xmlrpc \</div><div class="line">--enable-soap \</div><div class="line">--without-pear \</div><div class="line">--with-gettext \</div><div class="line">--enable-session \</div><div class="line">--with-curl \</div><div class="line">--with-jpeg-dir \</div><div class="line">--with-freetype-dir \</div><div class="line">--enable-opcache \</div><div class="line">--enable-fpm \</div><div class="line">--with-fpm-user=www \</div><div class="line">--with-fpm-group=www \</div><div class="line">--without-gdbm \</div><div class="line">--disable-fileinfo</div><div class="line"></div><div class="line">RUN <span class="built_in">cd</span> /opt/php-src &amp;&amp; make -j 4 --quiet  <span class="comment"># 可以根据cpu数量修改</span></div><div class="line"></div><div class="line">RUN <span class="built_in">cd</span> /opt/php-src &amp;&amp; make install</div><div class="line"></div><div class="line">RUN cp /opt/php-src/sapi/cli/php /usr/<span class="built_in">local</span>/bin/php</div><div class="line"></div><div class="line">RUN groupadd www</div><div class="line">RUN useradd www -g www <span class="_">-s</span> /sbin/nologin</div><div class="line"></div><div class="line">RUN mv /usr/<span class="built_in">local</span>/php7/etc/php-fpm.conf.default /usr/<span class="built_in">local</span>/php7/etc/php-fpm.conf</div><div class="line">RUN mv /usr/<span class="built_in">local</span>/php7/etc/php-fpm.d/www.conf.default /usr/<span class="built_in">local</span>/php7/etc/php-fpm.d/www.conf</div><div class="line"></div><div class="line">EXPOSE 9000  <span class="comment"># 默认的php-fpm端口 </span></div><div class="line">CMD [<span class="string">"/bin/bash"</span>]</div></pre></td></tr></table></figure>
+<p>保存名为dockerfile文件   </p>
+<h3 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker build <span class="_">-f</span> /path/to/dockerfile -t php7 . <span class="comment"># (注意后面的"."也要复制) 创建镜像</span></div></pre></td></tr></table></figure>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run -p 127.0.0.1:9000:9000 -v /path/to/project/:/path/to/project/ --restart=always <span class="_">-d</span> php7 /usr/<span class="built_in">local</span>/php7/sbin/php-fpm -F</div></pre></td></tr></table></figure>
+<p>参数解释     </p>
+<ul>
+<li>-p 127.0.0.1:9000:9000 , 将host的127.0.0.1:9000绑定到container的9000端口</li>
+<li>-v /path/to/project/:/path/to/project/ , 将host的项目目录mount到container的路径中, 使PHP可以访问到host的项目文件</li>
+<li>–restart=always , container会开机自启动</li>
+<li>-d , 后台运行</li>
+</ul>
+<h3 id="修改container-视情况可选"><a href="#修改container-视情况可选" class="headerlink" title="修改container(视情况可选)"></a>修改container(视情况可选)</h3><p>运行container</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">docker <span class="built_in">run</span> -<span class="keyword">it</span> php7</div></pre></td></tr></table></figure>
+<p>修改php-fpm的配置文件</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">vi <span class="regexp">/usr/</span>local<span class="regexp">/php7/</span>etc<span class="regexp">/php-fpm.d/</span>www.conf  <span class="comment"># 将listen = 127.0.0.1:9000 该为 listen = 9000. 使host可以访问container中的php-fpm</span></div></pre></td></tr></table></figure>
+<p>另外开启一个ssh提交容器修改, 类似数据库的事务机制. 每次运行一次container都类似于开启了一个事务. 当container发生修改则必须commit才能使变更生效.</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><div class="line">docker ps  <span class="meta"># 查看container ID</span></div><div class="line">docker commit <span class="params">&lt;CONTAINER_ID&gt;</span> php7</div></pre></td></tr></table></figure>
+<h3 id="进入container的bash-可选"><a href="#进入container的bash-可选" class="headerlink" title="进入container的bash(可选)"></a>进入container的bash(可选)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker ps  <span class="comment"># 查看container ID</span></div><div class="line">docker <span class="built_in">exec</span> -i -t &lt;CONTANER_ID&gt; bash</div></pre></td></tr></table></figure>
+            
+        </div>
+    </div>
+
+    
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://flysay.com/php7-dockerfile-with-php-fpm.html';
+        this.page.identifier = 'post-php7-dockerfile-with-php-fpm';
+    };
+
+    (function () {
+        var d = document, s = d.createElement('script');
+
+        s.src = '//flysay.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+        </div>
+    </div>
+</div>
+    </div>
+    <footer class="main-footer container">
+    <div class="row">
+        <div class="col-md-12 text-center text-muted" id="footer-content">
+            <a style="color:#000"
+                    target="_blank"
+                    href="/sitemap.xml">SiteMap</a><b class="gap">/</b><a target="_blank"
+                    style="color:#000"
+                    href="https://github.com/chenset"><i class="icon iconfont icon-github"></i> GitHub</a><b class="gap">/</b><a
+                    target="_blank"
+                    href="https://www.upyun.com"><img
+                        style="height: 33px"
+                        src="/img/upyun_logo_90x45.png"/></a>
+            <br/>
+            © 2015 - 2016
+            <b class="gap">/</b>Chenset
+
+        </div>
+    </div>
+</footer>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?94dfa9bd4d3ea70a00c48712f95ef978";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</div>
+
+<div class="hvr-ripple-out scroll-to-top" id="scroll-to-top">
+    <i class="icon iconfont icon-up"></i>
+</div>
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/velocity.min.js"></script>
+<script src="/js/velocity.ui.min.js"></script>
+<script src="/js/base.js"></script>
+<script src="/js/jquery.pjax.min.js"></script>
+<div class="layer-full"></div>
+</body>
+</html>

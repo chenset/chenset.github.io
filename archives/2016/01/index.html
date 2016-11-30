@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>
+        
+        Archives: 2016/1 -
+        
+        Fly Say
+    </title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <script>
+    var targetProtocol = "https:";
+    if (location.host.indexOf('127.0.0.1') === -1 && location.protocol != targetProtocol){
+        location.href = targetProtocol + location.href.substring(location.protocol.length);
+    }
+    </script>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/base.css">
+    
+    <link rel="canonical" href="https://flysay.com/archives/2016/01/index.html"/>
+    
+
+    <link rel="icon" href="//flysay.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="//flysay.com/favicon.ico" type="image/x-icon">
+    <link rel="bookmark" href="//flysay.com/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<div id="pjax-container">
+    <header class="main-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <span class="main-logo-wrap">
+                    <a id="main-logo"
+                            href="/"><span style="color:#ff5252">F</span><span style="color:#cc9966">l</span><span style="color:#41B883">y</span> <span style="color:#01AAED">S</span><span style="color:#cc9966">a</span><span style="color:#41B883">y</span></a></span>
+                <nav>
+                    <ul>
+                        
+                        <li class="cl-effect-16"><a href="/">首页</a></li>
+                        
+                        <li class="cl-effect-16"><a href="/tags/">标签</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-4">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input"><input type="hidden" name="sitesearch" value="https://flysay.com"></form>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="main-container">
+        <div class="container content-wrap">
+
+    
+    <article class="article">
+    <header class="article-header text-left">
+        
+        <h2 class="title1 cl-effect-4"><a class="" href="/python-requests-stream-length.html">Python Requests判断报文头中Content-Length长度后再下载报文body主体</a></h2>
+        
+    </header>
+    <div class="article-meta text-muted">
+        1月30日, 2016
+        <b class="gap">/</b>
+        <a class="text-muted article-tag-link" href="/tags/Python/">Python</a>
+    </div>
+    
+    <div><!-- 非多余! -->
+        <div class="article-content  index ">
+            
+            
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在写Python爬虫时, 要实现爬网页中响应报文头的Content-Length和Content-Type.<br>经过判断报文头中的内容后再决定是否下载报文主体.避免爬虫抓取大文件或不需要的MIME类型.</p>
+<h3 id="报文主体下载流"><a href="#报文主体下载流" class="headerlink" title="报文主体下载流"></a>报文主体下载流</h3><p>主要实现是通过Request的Body Content Workflow去实现报文头和报文主体分开下载, 即设置参数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">stream=<span class="keyword">True</span></div></pre></td></tr></table></figur...
+
+            
+        </div>
+    </div>
+
+    
+    <a class="read-more" href="/python-requests-stream-length.html">Read More</a>
+    
+</article>
+
+    
+    <article class="article">
+    <header class="article-header text-left">
+        
+        <h2 class="title1 cl-effect-4"><a class="" href="/php7-dockerfile-with-php-fpm.html">在Docker中一键安装PHP7</a></h2>
+        
+    </header>
+    <div class="article-meta text-muted">
+        1月11日, 2016
+        <b class="gap">/</b>
+        <a class="text-muted article-tag-link" href="/tags/Docker/">Docker</a>, <a class="text-muted article-tag-link" href="/tags/PHP/">PHP</a>
+    </div>
+    
+    <div><!-- 非多余! -->
+        <div class="article-content  index ">
+            
+            
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>通过使用docker的Dockerfile文件能够非常方便的生成指定的运行环境.<br>下面将要介绍的是使用Dockerfile文件一键生成的PHP7执行环境.</...
+
+            
+        </div>
+    </div>
+
+    
+    <a class="read-more" href="/php7-dockerfile-with-php-fpm.html">Read More</a>
+    
+</article>
+
+    
+    <article class="article">
+    <header class="article-header text-left">
+        
+        <h2 class="title1 cl-effect-4"><a class="" href="/raspberry-pi-2-with-dht22.html">树莓派使用DHT22读取温度的一种方式</a></h2>
+        
+    </header>
+    <div class="article-meta text-muted">
+        1月6日, 2016
+        <b class="gap">/</b>
+        <a class="text-muted article-tag-link" href="/tags/树莓派/">树莓派</a>
+    </div>
+    
+    <div><!-- 非多余! -->
+        <div class="article-content  index ">
+            
+            
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在网上找了很多教程发现在我的平台上都无法工作. 具体表现为无法读取数据, 读取数据无响应等. 甚至一度认为是芯片有问题.<br>经过不懈的探索终于还是成功工作了.</p>
+<p>所以遇到问题不成功的同学一定要尝试多种方式, 总有一种方式适合你.</p>
+<h3 id="原料"><a href="#原料" class="headerlink" title="原料"></a>原料</h3><ul>
+<li>Raspberry Pi 2 Model B v1.1  (树莓派 2)</li>
+<li>DHT22(AM2302) 集成上拉电阻版</li>
+</u...
+
+            
+        </div>
+    </div>
+
+    
+    <a class="read-more" href="/raspberry-pi-2-with-dht22.html">Read More</a>
+    
+</article>
+
+    
+
+    
+
+</div>
+    </div>
+    <footer class="main-footer container">
+    <div class="row">
+        <div class="col-md-12 text-center text-muted" id="footer-content">
+            <a style="color:#000"
+                    target="_blank"
+                    href="/sitemap.xml">SiteMap</a><b class="gap">/</b><a target="_blank"
+                    style="color:#000"
+                    href="https://github.com/chenset"><i class="icon iconfont icon-github"></i> GitHub</a><b class="gap">/</b><a
+                    target="_blank"
+                    href="https://www.upyun.com"><img
+                        style="height: 33px"
+                        src="/img/upyun_logo_90x45.png"/></a>
+            <br/>
+            © 2015 - 2016
+            <b class="gap">/</b>Chenset
+
+        </div>
+    </div>
+</footer>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?94dfa9bd4d3ea70a00c48712f95ef978";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</div>
+
+<div class="hvr-ripple-out scroll-to-top" id="scroll-to-top">
+    <i class="icon iconfont icon-up"></i>
+</div>
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/velocity.min.js"></script>
+<script src="/js/velocity.ui.min.js"></script>
+<script src="/js/base.js"></script>
+<script src="/js/jquery.pjax.min.js"></script>
+<div class="layer-full"></div>
+</body>
+</html>
