@@ -5,6 +5,15 @@
     src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('iconfont.woff') format('woff'), /* chrome, firefox */ url('iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
+/* latin */
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Titillium WebSemiBold'), local('TitilliumWeb-SemiBold'), url(anMUvcNT0H1YN4FII8wpr46gJz9aNFrmnwBdd69aqzY.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
 .iconfont {
     font-family: "iconfont" !important;
     font-size: 16px;
@@ -64,7 +73,7 @@
 
 body {
     position: relative;
-    font-family: Helvetica, Arial, sans-serif, "Microsoft YaHei", 'Helvetica Neue';
+    font-family: 'Titillium Web', Helvetica, Arial, sans-serif, "Microsoft YaHei", 'Helvetica Neue';
     line-height: 2;
     color: #444;
     font-size: 14px;
@@ -156,7 +165,7 @@ li {
 }
 
 .main-logo-wrap a {
-    font-size:1.4em;
+    font-size: 1.4em;
 }
 
 .main-header.animation .main-logo-wrap a, .main-header.animation ul li a {
@@ -185,7 +194,7 @@ li {
 }
 
 .main-header ul li a {
-    padding: 12px 12px;
+    padding: 13px 12px;
 }
 
 .main-header ul li a:hover {
@@ -209,7 +218,7 @@ li {
     height: 20px;
     line-height: 20px;
     color: #666;
-    margin-top: 14px;
+    margin-top: 16px;
     width: 150px;
     padding-right: 22px;
     border: 1px solid transparent;
@@ -251,8 +260,8 @@ figure pre, code pre {
 }
 
 .content-wrap h3, .content-wrap h4, .content-wrap h5, .content-wrap h6 {
-    font-weight: 600;
-    color: #333;
+    font-weight: 400;
+    color: #000;
 }
 
 .content-wrap img {
@@ -308,7 +317,7 @@ figure pre, code pre {
 
 .read-more {
     position: relative;
-    top: -23px;
+    top: -25px;
     border-bottom: none;
 }
 
