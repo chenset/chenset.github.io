@@ -310,7 +310,7 @@ figure pre, code pre {
 }
 
 .article-content a, .read-more, .read-more:hover {
-    border-bottom: 1px solid #41B883;
+    /*border-bottom: 1px solid #41B883;*/
     color: #41B883;
     font-weight: 600;
 }
