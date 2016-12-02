@@ -103,7 +103,10 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: 'Titillium Web', "Microsoft YaHei", 'Helvetica Neue', sans-serif;
+    font-weight: 400;
     margin: 15px 0;
+    color: #444;
 }
 
 input {
@@ -121,7 +124,6 @@ li {
 
 .title1, .title2 {
     margin: 10px 0;
-    color: #333;
     line-height: 1.5em;
     letter-spacing: 1px;
     font-size: 1.6em;
@@ -134,7 +136,6 @@ li {
 
 .title1 a {
     letter-spacing: 1px;
-    color: #333;
 }
 
 .title1 a:hover {
@@ -259,11 +260,6 @@ figure pre, code pre {
     padding-top: 150px;
 }
 
-.content-wrap h3, .content-wrap h4, .content-wrap h5, .content-wrap h6 {
-    font-weight: 400;
-    color: #000;
-}
-
 .content-wrap img {
     max-width: 100%;
     height: auto;
@@ -310,7 +306,6 @@ figure pre, code pre {
 }
 
 .article-content a, .read-more, .read-more:hover {
-    /*border-bottom: 1px solid #41B883;*/
     color: #41B883;
     font-weight: 600;
 }
