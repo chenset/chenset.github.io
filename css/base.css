@@ -270,13 +270,13 @@ figure pre, code pre {
 }
 
 .article-directory {
-    margin: 50px 0;
-    border: 1px dashed #4f4f4f;
+    margin: 50px 0 30px;
+    border: 1px dashed #656565;
 }
 
 .article-directory .toc-icon {
     float: right;
-    margin-right: 20px;
+    margin-right: 27px;
     font-size: 3em;
     color: #41B883;
 }

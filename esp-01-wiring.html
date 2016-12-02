@@ -4,7 +4,7 @@
     
     <title>
         
-        Archives: 2016 -
+        ESP8266 ESP-01 模块烧录模式如何接线 -
         
         Fly Say
     </title>
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/base.css">
     
-    <link rel="canonical" href="https://flysay.com/archives/2016/page/2/index.html"/>
+    <link rel="canonical" href="https://flysay.com/esp-01-wiring.html"/>
     
 
     <link rel="icon" href="//flysay.com/favicon.ico" type="image/x-icon">
@@ -58,86 +58,86 @@
 
     <div id="main-container">
         <div class="container content-wrap">
-
-    
-    <article class="article">
+    <div class="row">
+        <div class="col-md-12">
+            <article class="article">
     <header class="article-header text-left">
         
-        <h2 class="title1 cl-effect-4"><a class="" href="/php7-dockerfile-with-php-fpm.html">在Docker中一键安装PHP7</a></h2>
+        <h1 class="title2">ESP8266 ESP-01 模块烧录模式如何接线</h1>
         
     </header>
     <div class="article-meta text-muted">
-        1月11日, 2016
+        12月1日, 2016
         <b class="gap">/</b>
-        <a class="text-muted article-tag-link" href="/tags/Docker/">Docker</a>, <a class="text-muted article-tag-link" href="/tags/PHP/">PHP</a>
+        <a class="text-muted article-tag-link" href="/tags/ESP8266/">ESP8266</a>, <a class="text-muted article-tag-link" href="/tags/物联网/">物联网</a>
     </div>
     
+
+    
+    <div class="article-directory">
+        <span class="toc-icon">#</span>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#材料"><span class="toc-number">2.</span> <span class="toc-text">材料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接线"><span class="toc-number">3.</span> <span class="toc-text">接线</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">4.</span> <span class="toc-text">其他</span></a></li></ol>
+    </div>
+    
+    
     <div><!-- 非多余! -->
-        <div class="article-content  index ">
+        <div class="article-content ">
             
             
-            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>通过使用docker的Dockerfile文件能够非常方便的生成指定的运行环境.<br>下面将要介绍的是使用Dockerfile文件一键生成的PHP7执行环境.</...
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在此记录一次ESP8266 ESP-01模块烧录模式的接线方式.</p>
+<p><img src="/image/esp8266-01.jpg"></p>
+<end></end>
+
+<h3 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h3><ul>
+<li>ESP8266 ESP-01</li>
+<li>3.3V 独立供电</li>
+<li>1k电阻1或2个</li>
+<li>FTDI 下载器, 可以用其他下载器替代 </li>
+</ul>
+<h3 id="接线"><a href="#接线" class="headerlink" title="接线"></a>接线</h3><ul>
+<li>下载器TX&nbsp;&nbsp;&nbsp;&nbsp;接 1k电阻 再接 ESP-01的RX   </li>
+<li>下载器RX&nbsp;&nbsp;&nbsp;&nbsp;接 ESP-01的TX   </li>
+<li><p>下载器GND 接 独立供电的GND   </p>
+</li>
+<li><p>ESP-01 CH_PD&nbsp;接 1k电阻(可选) 再接 独立供电的3.3v   </p>
+</li>
+<li>ESP-01 VCC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接 独立供电的3.3v   </li>
+<li>ESP-01 GND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接 独立供电的GND   </li>
+<li>ESP-01 GPIO0&nbsp;&nbsp;&nbsp;&nbsp;接 独立供电的GND   </li>
+</ul>
+<center><br>网上的图片, 并稍作修改. 其中10K和2K电阻丝可选的<br><img src="/image/esp01_with_FTDI.jpg"><br></center>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>GPIO0接GND为烧录模式, 是必接的<br>所有GND都必须供用独立供电的GND</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>每次接线烧录都比较复杂, 所有自己焊接了一个烧录平台.<br>当然ESP8266支持OTA功能, 这个自制平台只用于第一次烧录和OTA失败的情况.   </p>
+<center><br><img src="/image/ESP8266_IMG_0366.jpg"><br><img src="/image/ESP8266_IMG_0367.jpg"><br><img src="/image/ESP8266_IMG_0368.jpg"><br></center>
+
 
             
         </div>
     </div>
 
     
-    <a class="read-more" href="/php7-dockerfile-with-php-fpm.html">Read More</a>
-    
 </article>
 
-    
-    <article class="article">
-    <header class="article-header text-left">
-        
-        <h2 class="title1 cl-effect-4"><a class="" href="/raspberry-pi-2-with-dht22.html">树莓派使用DHT22读取温度的一种方式</a></h2>
-        
-    </header>
-    <div class="article-meta text-muted">
-        1月6日, 2016
-        <b class="gap">/</b>
-        <a class="text-muted article-tag-link" href="/tags/树莓派/">树莓派</a>
-    </div>
-    
-    <div><!-- 非多余! -->
-        <div class="article-content  index ">
-            
-            
-            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在网上找了很多教程发现在我的平台上都无法工作. 具体表现为无法读取数据, 读取数据无响应等. 甚至一度认为是芯片有问题.<br>经过不懈的探索终于还是成功工作了.</p>
-<p>所以遇到问题不成功的同学一定要尝试多种方式, 总有一种方式适合你.</p>
-<h3 id="原料"><a href="#原料" class="headerlink" title="原料"></a>原料</h3><ul>
-<li>Raspberry Pi 2 Model B v1.1  (树莓派 2)</li>
-<li>DHT22(AM2302) 集成上拉电阻版</li>
-</u...
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://flysay.com/esp-01-wiring.html';
+        this.page.identifier = 'post-esp-01-wiring';
+    };
 
-            
+    (function () {
+        var d = document, s = d.createElement('script');
+
+        s.src = '//flysay.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
         </div>
     </div>
-
-    
-    <a class="read-more" href="/raspberry-pi-2-with-dht22.html">Read More</a>
-    
-</article>
-
-    
-
-    
-<nav class="page-nav">
-
-    
-    <a class="extend prev" href="/archives/2016/">上一页</a>
-    
-
-    <span class="info">2/2</span>
-
-    
-    <span class="extend">下一页</span>
-    
-
-</nav>
-
-
 </div>
     </div>
     <footer class="main-footer container">
