@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>
+        
+        Linux下搭建ngrok TCP服务 -
+        
+        Fly Say
+    </title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <script>
+    var targetProtocol = "https:";
+    if (location.host.indexOf('127.0.0.1') === -1 && location.protocol != targetProtocol){
+        location.href = targetProtocol + location.href.substring(location.protocol.length);
+    }
+    </script>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/base.css">
+    
+    <link rel="canonical" href="https://flysay.com/install-ngrok-server.html"/>
+    
+
+    <link rel="icon" href="//flysay.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="//flysay.com/favicon.ico" type="image/x-icon">
+    <link rel="bookmark" href="//flysay.com/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<div id="pjax-container">
+    <header class="main-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <span class="main-logo-wrap">
+                    <a id="main-logo"
+                            href="/"><span style="color:#ff5252">F</span><span style="color:#cc9966">l</span><span style="color:#41B883">y</span> <span style="color:#01AAED">S</span><span style="color:#cc9966">a</span><span style="color:#41B883">y</span></a></span>
+                <nav>
+                    <ul>
+                        
+                        <li class="cl-effect-16"><a href="/">首页</a></li>
+                        
+                        <li class="cl-effect-16"><a href="/tags/">标签</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-4">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input"><input type="hidden" name="sitesearch" value="https://flysay.com"></form>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="main-container">
+        <div class="container content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <article class="article">
+    <header class="article-header text-left">
+        
+        <h1 class="title2">Linux下搭建ngrok TCP服务</h1>
+        
+    </header>
+    <div class="article-meta text-muted">
+        12月7日, 2016
+        <b class="gap">/</b>
+        <a class="text-muted article-tag-link" href="/tags/Linux/">Linux</a>
+    </div>
+    
+
+    
+    <div class="article-directory">
+        <span class="toc-icon">#</span>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装服务端和客户端"><span class="toc-number">2.</span> <span class="toc-text">安装服务端和客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端运行"><span class="toc-number">3.</span> <span class="toc-text">服务端运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客服端运行"><span class="toc-number">4.</span> <span class="toc-text">客服端运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">5.</span> <span class="toc-text">注意</span></a></li></ol>
+    </div>
+    
+    
+    <div><!-- 非多余! -->
+        <div class="article-content ">
+            
+            
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>搭建一个ngrok的TCP穿透服务, 用于穿透内网访问家里的服务</p>
+<end></end>
+
+<h3 id="安装服务端和客户端"><a href="#安装服务端和客户端" class="headerlink" title="安装服务端和客户端"></a>安装服务端和客户端</h3><p>安装编译工具链</p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><div class="line"><span class="meta">#ubuntu</span></div><div class="line">apt-<span class="keyword">get</span> install build-essential</div><div class="line"><span class="meta">#centos</span></div><div class="line">yum groupinstall <span class="string">"Development Tools"</span></div></pre></td></tr></table></figure>
+<p>安装Go, ngrok基于Go实现, 编译时需要Go的支持.下载解压即可</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">wget https:<span class="regexp">//</span>storage.googleapis.com<span class="regexp">/golang/g</span>o1.<span class="number">7.4</span>.linux-amd64.tar.gz</div><div class="line">tar -zxvf go1.<span class="number">7.4</span>.linux-amd64.tar.gz</div><div class="line">mv .<span class="regexp">/go /u</span>sr<span class="regexp">/local/g</span>o  <span class="comment"># 移动到其他目录</span></div><div class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/go/</span>bin<span class="regexp">/go /u</span>sr<span class="regexp">/bin/g</span>o  <span class="comment"># make时需要用到Go, 所以要软链到/usr/bin</span></div></pre></td></tr></table></figure>
+<p>编译ngrok</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/inconshreveable/ngrok</div><div class="line">cd ngrok</div><div class="line">make <span class="comment"># 完成后会在当前路径下生成bin目录, 其中包含客户端ngrok和服务端ngrokd</span></div></pre></td></tr></table></figure>
+<h3 id="服务端运行"><a href="#服务端运行" class="headerlink" title="服务端运行"></a>服务端运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">./ngrokd -domain <span class="string">"xxx.xxx.com"</span> -tunnelAddr <span class="string">":44444"</span>  <span class="comment"># 服务器的地址与端口设置</span></div></pre></td></tr></table></figure>
+<h3 id="客服端运行"><a href="#客服端运行" class="headerlink" title="客服端运行"></a>客服端运行</h3><p>创建配置文件 config.ini   </p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><div class="line"><span class="symbol">server_addr:</span> <span class="string">"xxx.xxx.com:44444"</span>  <span class="meta"># 指定服务器的地址与端口</span></div><div class="line"><span class="symbol">trust_host_root_certs:</span> false</div><div class="line"><span class="symbol">tunnels:</span></div><div class="line"><span class="symbol">    flysay:</span>                       <span class="meta"># 为该穿透配置命名, 可以有多个不同的配置</span></div><div class="line"><span class="symbol">        remote_port:</span> <span class="number">33333</span>        <span class="meta"># 指定远程访问的端口, 不然tcp模式下会随机生成.  配置完成之后使用xxx.xxx.com:33333访问该穿透</span></div><div class="line"><span class="symbol">        proto:</span></div><div class="line"><span class="symbol">            tcp:</span> <span class="number">80</span>               <span class="meta"># tcp协议的本地80端口</span></div></pre></td></tr></table></figure>
+<p>运行客户端</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">./ngrok -<span class="built_in">log</span>=<span class="built_in">stdout</span> -config=./config.ini start flysay  # 开启名为flysay的穿透 . -<span class="built_in">log</span>=<span class="built_in">stdout</span>加上该参数才能后台运行</div></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>过程中涉及到多个端口, 注意放开防火墙的限制</p>
+
+            
+        </div>
+    </div>
+
+    
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://flysay.com/install-ngrok-server.html';
+        this.page.identifier = 'post-install-ngrok-server';
+    };
+
+    (function () {
+        var d = document, s = d.createElement('script');
+
+        s.src = '//flysay.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+        </div>
+    </div>
+</div>
+    </div>
+    <footer class="main-footer container">
+    <div class="row">
+        <div class="col-md-12 text-center text-muted" id="footer-content">
+            <a style="color:#000" href="/links/">Links</a>
+            <b class="gap">/</b>
+            <a style="color:#000"
+                    target="_blank"
+                    href="/sitemap.xml">SiteMap</a>
+            <b class="gap">/</b>
+            <a target="_blank"
+                    style="color:#000"
+                    href="https://github.com/chenset">GitHub</a>
+            <br/>
+            © 2015 - 2016
+            <b class="gap">/</b>Chenset
+
+        </div>
+    </div>
+</footer>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?94dfa9bd4d3ea70a00c48712f95ef978";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</div>
+
+<div class="hvr-ripple-out scroll-to-top" id="scroll-to-top">
+    <i class="icon iconfont icon-up"></i>
+</div>
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/velocity.min.js"></script>
+<script src="/js/velocity.ui.min.js"></script>
+<script src="/js/base.js"></script>
+<script src="/js/jquery.pjax.min.js"></script>
+<div class="layer-full"></div>
+</body>
+</html>

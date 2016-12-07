@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://flysay.com/install-ngrok-server.html</loc>
+    
+    <lastmod>2016-12-07T07:26:02.652Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://flysay.com/about/index.html</loc>
     
-    <lastmod>2016-12-06T09:18:54.572Z</lastmod>
+    <lastmod>2016-12-06T09:32:25.322Z</lastmod>
     
   </url>
   
@@ -30,6 +37,13 @@
   </url>
   
   <url>
+    <loc>https://flysay.com/raspivid-with-vlc.html</loc>
+    
+    <lastmod>2016-11-30T01:47:57.298Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://flysay.com/raspberry-pi-2-with-dht22.html</loc>
     
     <lastmod>2016-11-30T01:47:57.298Z</lastmod>
@@ -44,14 +58,7 @@
   </url>
   
   <url>
-    <loc>https://flysay.com/raspivid-with-vlc.html</loc>
-    
-    <lastmod>2016-11-30T01:47:57.298Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://flysay.com/github-no-password-push.html</loc>
+    <loc>https://flysay.com/python-requests-stream-length.html</loc>
     
     <lastmod>2016-11-30T01:47:57.297Z</lastmod>
     
@@ -72,14 +79,14 @@
   </url>
   
   <url>
-    <loc>https://flysay.com/python-requests-stream-length.html</loc>
+    <loc>https://flysay.com/new-post.html</loc>
     
     <lastmod>2016-11-30T01:47:57.297Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://flysay.com/new-post.html</loc>
+    <loc>https://flysay.com/github-no-password-push.html</loc>
     
     <lastmod>2016-11-30T01:47:57.297Z</lastmod>
     
