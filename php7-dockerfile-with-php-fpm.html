@@ -62,16 +62,13 @@
         <div class="col-md-12">
             <article class="article">
     <header class="article-header text-left">
-        
         <h1 class="title2">在Docker中一键安装PHP7</h1>
-        
     </header>
     <div class="article-meta text-muted">
         1月11日, 2016
         <b class="gap">/</b>
         <a class="text-muted article-tag-link" href="/tags/Docker/">Docker</a>, <a class="text-muted article-tag-link" href="/tags/PHP/">PHP</a>
     </div>
-    
 
     
     <div class="article-directory">
@@ -79,11 +76,8 @@
         <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">2.</span> <span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.</span> <span class="toc-text">创建镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">4.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改container-视情况可选"><span class="toc-number">5.</span> <span class="toc-text">修改container(视情况可选)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进入container的bash-可选"><span class="toc-number">6.</span> <span class="toc-text">进入container的bash(可选)</span></a></li></ol>
     </div>
     
-    
     <div><!-- 非多余! -->
-        <div class="article-content ">
-            
-            
+        <div class="article-content">
             <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>通过使用docker的Dockerfile文件能够非常方便的生成指定的运行环境.<br>下面将要介绍的是使用Dockerfile文件一键生成的PHP7执行环境.</p>
 <end></end>
 
@@ -105,11 +99,8 @@
 <p>另外开启一个ssh提交容器修改, 类似数据库的事务机制. 每次运行一次container都类似于开启了一个事务. 当container发生修改则必须commit才能使变更生效.</p>
 <figure class="highlight dts"><table><tr><td class="code"><pre><div class="line">docker ps  <span class="meta"># 查看container ID</span></div><div class="line">docker commit <span class="params">&lt;CONTAINER_ID&gt;</span> php7</div></pre></td></tr></table></figure>
 <h3 id="进入container的bash-可选"><a href="#进入container的bash-可选" class="headerlink" title="进入container的bash(可选)"></a>进入container的bash(可选)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker ps  <span class="comment"># 查看container ID</span></div><div class="line">docker <span class="built_in">exec</span> -i -t &lt;CONTANER_ID&gt; bash</div></pre></td></tr></table></figure>
-            
         </div>
     </div>
-
-    
 </article>
 
 <div id="disqus_thread"></div>

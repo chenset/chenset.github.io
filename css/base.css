@@ -98,7 +98,7 @@ body {
 }
 
 a {
-    color: #333;
+    color: #444;
     text-decoration: none !important;
 }
 
@@ -124,9 +124,9 @@ li {
 
 .title1, .title2 {
     margin: 10px 0;
-    line-height: 1.5em;
+    line-height: 1.3em;
     letter-spacing: 1px;
-    font-size: 1.6em;
+    font-size: 1.3em;
     font-weight: 400;
 }
 

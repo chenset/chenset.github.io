@@ -62,16 +62,13 @@
         <div class="col-md-12">
             <article class="article">
     <header class="article-header text-left">
-        
         <h1 class="title2">树莓派使用DHT22读取温度的一种方式</h1>
-        
     </header>
     <div class="article-meta text-muted">
         1月6日, 2016
         <b class="gap">/</b>
         <a class="text-muted article-tag-link" href="/tags/树莓派/">树莓派</a>
     </div>
-    
 
     
     <div class="article-directory">
@@ -79,11 +76,8 @@
         <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原料"><span class="toc-number">2.</span> <span class="toc-text">原料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引脚"><span class="toc-number">3.</span> <span class="toc-text">引脚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始"><span class="toc-number">4.</span> <span class="toc-text">开始</span></a></li></ol>
     </div>
     
-    
     <div><!-- 非多余! -->
-        <div class="article-content ">
-            
-            
+        <div class="article-content">
             <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在网上找了很多教程发现在我的平台上都无法工作. 具体表现为无法读取数据, 读取数据无响应等. 甚至一度认为是芯片有问题.<br>经过不懈的探索终于还是成功工作了.</p>
 <p>所以遇到问题不成功的同学一定要尝试多种方式, 总有一种方式适合你.</p>
 <h3 id="原料"><a href="#原料" class="headerlink" title="原料"></a>原料</h3><ul>
@@ -109,11 +103,8 @@
 <p>读取温度的Python代码</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> Adafruit_DHT <span class="keyword">as</span> dht</div><div class="line"></div><div class="line">h,t = dht.read_retry(dht.DHT22, <span class="number">4</span>)  <span class="comment"># 这里的4对应着 GPIO#4</span></div><div class="line"><span class="keyword">print</span> h, t</div></pre></td></tr></table></figure>
 
-            
         </div>
     </div>
-
-    
 </article>
 
 <div id="disqus_thread"></div>
